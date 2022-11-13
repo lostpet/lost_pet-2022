@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1090105548721",
+    "project_id": "mascotas-perdidas-tic",
+    "storage_bucket": "mascotas-perdidas-tic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090105548721:android:469790584c6b3bc1faa790",
+        "android_client_info": {
+          "package_name": "com.example.bellota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090105548721-ng6kmjle7jlkt4cvju9kclq30p0lhtns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFBkVYVeFWR3nGMDeaLBnYX8k-kuMkAf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090105548721-ng6kmjle7jlkt4cvju9kclq30p0lhtns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
