@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'loguear.dart';
 import 'mascotas_rescatadas.dart';
-import 'ventana1.dart';
+
 
 class principal extends StatelessWidget {
   const principal({Key? key}) : super(key: key);

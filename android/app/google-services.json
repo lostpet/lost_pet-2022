@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1090105548721",
-    "project_id": "mascotas-perdidas-tic",
-    "storage_bucket": "mascotas-perdidas-tic.appspot.com"
+    "project_number": "794135477712",
+    "project_id": "pet-lost-2022",
+    "storage_bucket": "pet-lost-2022.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1090105548721:android:469790584c6b3bc1faa790",
+        "mobilesdk_app_id": "1:794135477712:android:4cb8a88e21ece2dd9d0dd5",
         "android_client_info": {
           "package_name": "com.example.bellota"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1090105548721-ng6kmjle7jlkt4cvju9kclq30p0lhtns.apps.googleusercontent.com",
+          "client_id": "794135477712-ik5abfuer10u8leho5uo9olpo1eikqrl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBFBkVYVeFWR3nGMDeaLBnYX8k-kuMkAf8"
+          "current_key": "AIzaSyCkpRypVUZGpACTkBX8YJK6vHWF8f-kCWo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1090105548721-ng6kmjle7jlkt4cvju9kclq30p0lhtns.apps.googleusercontent.com",
+              "client_id": "794135477712-ik5abfuer10u8leho5uo9olpo1eikqrl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
