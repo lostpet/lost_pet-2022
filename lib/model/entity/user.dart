@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserEntity {
-  late String? name;
-  late String? phone;
+  late String? id;
   late String? email;
-  late String? password;
+  late String? name;
+  late String? address;
+  late String? phone;
   late bool? isAdmin;
 
-  UserEntity({this.email, this.name, this.phone, this.isAdmin});
+  UserEntity({this.email, this.name, this.address, this.phone, this.isAdmin});
 
   factory UserEntity.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -17,6 +18,7 @@ class UserEntity {
     return UserEntity(
         email: data?["email"],
         name: data?["name"],
+        address: data?["address"],
         phone: data?["phone"],
         isAdmin: data?["isAdmin"]);
   }
@@ -25,6 +27,7 @@ class UserEntity {
     return {
       if (email != null && email!.isNotEmpty) "email": email,
       if (name != null && name!.isNotEmpty) "name": name,
+      if (address != null && address!.isNotEmpty) "address": address,
       if (phone != null && phone!.isNotEmpty) "phone": phone,
       "isAdmin": isAdmin ?? false
     };
@@ -32,8 +35,6 @@ class UserEntity {
 
   @override
   String toString() {
-    return "UserEntity {$email, $name, $phone, $isAdmin}";
+    return "UserEntity {$email, $name, $address, $phone, $isAdmin}";
   }
-
 }
-

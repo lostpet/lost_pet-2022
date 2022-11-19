@@ -1,186 +1,125 @@
 import 'package:flutter/material.dart';
 
+import '../../controller/login_controller.dart';
+import '../../controller/request/controller_register_request.dart';
 
-class MyRegister extends StatefulWidget {
-  const MyRegister({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  late RegisterRequest _data;
+  late LoginController _controller;
 
-  @override
-  _MyRegisterState createState() => _MyRegisterState();
-}
+  RegisterPage({super.key}) {
+    _data = RegisterRequest();
+    _controller = LoginController();
+  }
 
-class _MyRegisterState extends State<MyRegister> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/register.png'), fit: BoxFit.cover),
+    var formKey = GlobalKey<FormState>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Registro"),
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: 35, top: 30),
-              child: Text(
-                'Create\nAccount',
-                style: TextStyle(color: Colors.white, fontSize: 33),
-              ),
-            ),
-            SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.28),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 35, right: 35),
-                      child: Column(
-                        children: [
-                          TextField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                hintText: "Name",
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                hintText: "Email",
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            style: TextStyle(color: Colors.white),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                hintText: "Password",
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 27,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Color(0xff4c505b),
-                                child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      Navigator.pushNamed(context, 'login');
-                                    },
-                                    icon: Icon(
-                                      Icons.arrow_forward,
-                                    )),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, 'login');
-                                  // Navigator.of(context).push(_createRoute());
-                                },
-                                child: Text(
-                                  'Sign In',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Colors.white,
-                                      fontSize: 18),
-                                ),
-                                style: ButtonStyle(),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+      body: Form(
+        key: formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _basicWidget(
+                  "Nombre",
+                  validarCampoObligatorio,
+                      (newValue) {
+                    _data.name = newValue!;
+                  },
                 ),
-              ),
+                _basicWidget(
+                  "Direccion",
+                  validarCampoObligatorio,
+                      (newValue) {
+                    _data.address = newValue!;
+                  },
+                ),
+                _basicWidget(
+                  "Correo Electrónico",
+                  validarCampoObligatorio,
+                      (newValue) {
+                    _data.email = newValue!;
+                  },
+                ),
+                _basicWidget(
+                  "Telefono",
+                      (value) => null,
+                      (newValue) {
+                    _data.phone = newValue;
+                  },
+                ),
+                _basicWidget(
+                  "Contraseña",
+                  validarCampoObligatorio,
+                      (newValue) {
+                    _data.password = newValue!;
+                  },
+                  isPassword: true,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+
+                      try {
+                        await _controller.registerNewUser(_data);
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content:
+                              Text("Usuario registrado correctamente")),
+                        );
+
+                        Navigator.pop(context);
+                      } catch (error) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(error.toString()),
+                          ),
+                        );
+                      }
+                    }
+                  },
+                  child: const Text("Registrar"),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
-}
 
-// Route _createRoute() {
-//   return PageRouteBuilder(
-//     pageBuilder: (context, animation, secondaryAnimation) => const MyLogin(),
-//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-//       return child;
-//     },
-//   );
-// }
+  String? validarCampoObligatorio(String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo es obligatorio";
+    }
+    return null;
+  }
+
+  Widget _basicWidget(String title, FormFieldValidator<String?> validate,
+      FormFieldSetter<String?> save,
+      {bool isPassword = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextFormField(
+        maxLength: 50,
+        obscureText: isPassword,
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          labelText: title,
+        ),
+        validator: validate,
+        onSaved: save,
+      ),
+    );
+  }
+}

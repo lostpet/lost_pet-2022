@@ -29,7 +29,7 @@ class mascotas_rescatadas extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const MyLogin()),
+            MaterialPageRoute(builder: (context) => LoginPage()),
           );
 
 
